@@ -11,9 +11,7 @@ func mergeSort(data []int) []int {
 		return data
 	}
 
-	var l []int
-	var r []int
-
+	var l, r []int
 	m := len(data) / 2
 
 	wg := sync.WaitGroup{}
