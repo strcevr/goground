@@ -8,7 +8,6 @@ import (
 func ReallocatedAndAssignCases () {
 
 	a := []int{1, 2, 3, 4, 5}
-	// Closure.
 	func(b []int) {
 		b[1] = 7
 		b = append(b, 1)
@@ -17,9 +16,9 @@ func ReallocatedAndAssignCases () {
 	fmt.Println(a) // prints [1 7 3 4 5].
 
 	c := a[0:4]
-	fmt.Println(c)
+	fmt.Println(c) // prints [1 7 3 4]
 	a = a[:0] // Slice the slice to zero length to keep the underlying array and allocated memory.
-	fmt.Println(a)
+	fmt.Println(a) // Prints []
 
 	fmt.Println("Try to assign value into already empty slice")
 	func(){
@@ -30,12 +29,12 @@ func ReallocatedAndAssignCases () {
 		}()
 		a[2] = 3 // Panic
 	}()
-	fmt.Println(a)
-	fmt.Println(a[:2]) // If the slice is extended again, the original data reappears.
+	fmt.Println(a) // Prints []
+	fmt.Println(a[:2]) // If the slice is extended again, the original data reappears. Prints [1 7]
 
 	var a2 []int
 	a2 = append(a2,20)
-	fmt.Println(a2)
+	fmt.Println(a2) // Prints [20]
 }
 
 func SizesCases () {
@@ -64,4 +63,12 @@ func CopyCases () {
 	fmt.Println(dst)
 	copy(dst, []int{})
 	fmt.Println(dst)
+}
+
+func ReturnNilSlice () {
+	a := func() []*int {
+			return nil
+		}()
+	fmt.Println(len(a))
+	fmt.Println(a)
 }
