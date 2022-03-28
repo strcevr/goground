@@ -35,6 +35,15 @@ func ReallocatedAndAssignCases () {
 	var a2 []int
 	a2 = append(a2,20)
 	fmt.Println(a2) // Prints [20]
+
+	var d = make([]int, 0, 10)
+	d = append(d, 1, 2, 3, 4, 5)
+	func(s []int) {
+		s = append(s, 10, 11, 12, 13, 14, 15, 16)
+		fmt.Println(s)
+	}(d[1:3])
+	d = append(d, 6, 7, 8)
+	fmt.Println(d) // Prints [1 2 3 10 11 6 7 8]
 }
 
 func SizesCases () {
