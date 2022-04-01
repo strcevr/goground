@@ -6,7 +6,6 @@ import (
 )
 
 func ReallocatedAndAssignCases () {
-
 	a := []int{1, 2, 3, 4, 5}
 	func(b []int) {
 		b[1] = 7
@@ -76,8 +75,8 @@ func CopyCases () {
 
 func ReturnNilSlice () {
 	a := func() []*int {
-			return nil
-		}()
+		return nil
+	}()
 	fmt.Println(len(a))
 	fmt.Println(a)
 }
